@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AquaAI — Water Pollution Detection System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ━━━ TOPNAV ━━━ -->
+<nav id="topnav">
+  <div class="nav-brand" onclick="go('home')">
+    <div class="nav-brand-dot">💧</div>
+    AquaAI
+  </div>
+  <ul class="nav-items">
+    <li><a id="nl-home"      class="active" onclick="go('home')">Home</a></li>
+    <li><a id="nl-dashboard"            onclick="go('dashboard')">Dashboard</a></li>
+    <li><a id="nl-monitor"              onclick="go('monitor')">Live Monitor</a></li>
+    <li><a id="nl-ai"                   onclick="go('ai')">AI Engine</a></li>
+    <li><a id="nl-camera"               onclick="go('camera')">Camera AI</a></li>
+    <li><a id="nl-map"                  onclick="go('map')">Map</a></li>
+    <li><a id="nl-analytics"            onclick="go('analytics')">Analytics</a></li>
+    <li><a id="nl-alerts"               onclick="go('alerts')">Alerts</a></li>
+    <li><a id="nl-report"               onclick="go('report')">Reports</a></li>
+  </ul>
+  <div class="nav-end">
+    <div class="live-pill"><div class="live-dot"></div> LIVE</div>
+    <div class="notif-btn" onclick="go('alerts')">🔔<div class="notif-badge">3</div></div>
+  </div>
+</nav>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     HOME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div id="page-home" class="page show">
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow-a"></div>
+    <div class="hero-glow-b"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">🛰️ IoT + AI + Predictive Analytics</div>
+      <h1 class="hero-h1">AI Water Pollution<br><em>Detection Platform</em></h1>
+      <p class="hero-tagline">Monitor &nbsp;•&nbsp; Predict &nbsp;•&nbsp; Protect</p>
+      <p class="hero-sub">Real-time Water Quality Monitoring using AI, IoT Sensors &amp; Predictive Analytics</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="go('dashboard')">📊 View Dashboard</button>
+        <button class="btn-ghost"   onclick="go('report')">📄 Generate Report</button>
+      </div>
+      <div class="hero-kpis">
+        <div><div class="kpi-num">47</div><div class="kpi-lbl">Stations Live</div></div>
+        <div><div class="kpi-num">99.2%</div><div class="kpi-lbl">AI Accuracy</div></div>
+        <div><div class="kpi-num">1.2M</div><div class="kpi-lbl">Data Points/Day</div></div>
+        <div><div class="kpi-num">&lt; 60s</div><div class="kpi-lbl">Alert Response</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="section-eyebrow">Platform Capabilities</div>
+    <h2 class="section-title">Built for Real-World Deployment</h2>
+    <p class="section-sub">Government-grade monitoring infrastructure for rivers, lakes, and water treatment facilities</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">📡</div>
+        <div class="feat-title">Real-Time Monitoring</div>
+        <div class="feat-desc">ESP32 IoT nodes transmit live readings via MQTT every 60 seconds. pH, TDS, turbidity, temperature, and dissolved oxygen — all visible on a single screen.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🤖</div>
+        <div class="feat-title">AI Pollution Prediction</div>
+        <div class="feat-desc">Scikit-learn Random Forest model trained on 5 years of river data predicts contamination events 18–72 hours in advance with 91% confidence.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🌊</div>
+        <div class="feat-title">AI Risk Score™</div>
+        <div class="feat-desc">Proprietary 0–100 Water Pollution Risk Score aggregates all sensor inputs into one actionable index — the centerpiece of the platform.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔔</div>
+        <div class="feat-title">Smart Alerts</div>
+        <div class="feat-desc">Threshold-based and AI-triggered alerts via SMS, email, and push. Automatic escalation to CPCB and state agencies when critical thresholds are breached.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📸</div>
+        <div class="feat-title">Camera AI Analysis</div>
+        <div class="feat-desc">Upload water surface photos for instant computer vision analysis. Detects plastic waste, algae bloom, oil sheens, and foam contamination in seconds.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📄</div>
+        <div class="feat-title">Government Reporting</div>
+        <div class="feat-desc">One-click CPCB-compliant PDF reports with AI findings, incident logs, trend charts, and recommendations — auto-compiled each month.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     DASHBOARD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div id="page-dashboard" class="page">
+  <div class="wrap">
+    <div class="dash-banner">
+      <div class="dash-banner-left">
+        <h2>AI WATER POLLUTION DETECTION SYSTEM</h2>
+        <p>River Ganga Monitoring Station #07 — Varanasi, Uttar Pradesh</p>
+      </div>
+      <div class="dash-banner-right">
+        <div class="live-pill"><div class="live-dot"></div> LIVE</div>
+        <div class="updated-lbl">🕐 Updated 2 min ago</div>
+      </div>
+    </div>
+
+    <div class="dash-top">
+      <!-- WQI ring -->
+      <div class="wqi-card">
+        <div class="wqi-ring">
+          <svg viewBox="0 0 136 136">
+            <circle class="track" cx="68" cy="68" r="58"></circle>
+            <circle class="fill"  cx="68" cy="68" r="58"></circle>
+          </svg>
+          <div class="wqi-center">
+            <div class="wqi-num">82</div>
+            <div class="wqi-lbl">WQI</div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Water Quality Index</div>
+        <div class="chip chip-safe">✓ &nbsp;SAFE</div>
+      </div>
+
+      <!-- sensor panel -->
+      <div class="sensor-panel">
+        <div class="sensor-panel-title">Live Sensor Readings</div>
+        <div class="sensor-list">
+          <div class="s-row">
+            <div class="s-icon">⚗️</div>
+            <div class="s-name">pH Level</div>
+            <div class="s-bar-wrap"><div class="s-bar" style="width:60%"></div></div>
+            <div class="s-val">7.2</div><div class="s-unit"></div>
+          </div>
+          <div class="s-row">
+            <div class="s-icon">💎</div>
+            <div class="s-name">TDS</div>
+            <div class="s-bar-wrap"><div class="s-bar" style="width:42%"></div></div>
+            <div class="s-val">210</div><div class="s-unit">ppm</div>
+          </div>
+          <div class="s-row">
+            <div class="s-icon">🌀</div>
+            <div class="s-name">Turbidity</div>
+            <div class="s-bar-wrap"><div class="s-bar" style="width:20%"></div></div>
+            <div class="s-val">4</div><div class="s-unit">NTU</div>
+          </div>
+          <div class="s-row">
+            <div class="s-icon">🌡️</div>
+            <div class="s-name">Temperature</div>
+            <div class="s-bar-wrap"><div class="s-bar" style="width:55%"></div></div>
+            <div class="s-val">24</div><div class="s-unit">°C</div>
+          </div>
+          <div class="s-row">
+            <div class="s-icon">🫧</div>
+            <div class="s-name">Dissolved O₂</div>
+            <div class="s-bar-wrap"><div class="s-bar" style="width:85%"></div></div>
+            <div class="s-val">8.5</div><div class="s-unit">mg/L</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-kpis">
+      <div class="kpi-card">
+        <div class="kpi-card-lbl">Pollution Risk</div>
+        <div class="kpi-card-val" style="color:var(--safe)">LOW</div>
+        <div class="kpi-card-sub">Risk Score 18 / 100</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-card-lbl">Active Stations</div>
+        <div class="kpi-card-val">47<span style="font-size:16px;color:var(--muted)">/50</span></div>
+        <div class="kpi-card-sub">3 under maintenance</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-card-lbl">Alerts Today</div>
+        <div class="kpi-card-val" style="color:var(--moderate)">3</div>
+        <div class="kpi-card-sub">1 active · 2 resolved</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-card-lbl">AI Predictions</div>
+        <div class="kpi-card-val">12</div>
+        <div class="kpi-card-sub">Generated this week</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-card-lbl">Last Incident</div>
+        <div class="kpi-card-val" style="font-size:22px">3 days</div>
+        <div class="kpi-card-sub">TDS spike — Resolved</div>
+      </div>
+    </div>
+
+    <div class="risk-strip">
+      <div class="risk-strip-icon">🟢</div>
+      <div class="risk-strip-body">
+        <h3>LOW RISK — All Parameters Within Safe Limits</h3>
+        <p>AI model predicts no pollution events in the next 48 hours for Station #07</p>
+      </div>
+      <button class="btn-primary" onclick="go('ai')">Run AI Analysis</button>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     LIVE MONITOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div id="page-monitor" class="page">
+  <div class="wrap">
+    <div class="pg-head">
+      <h1>Live Monitoring</h1>
+      <p>Real-time sensor data · Station #07 Varanasi · Auto-refreshes every 60 s</p>
+    </div>
+
+    <div class="param-grid">
+      <div class="param-card">
+        <div class="p-icon">⚗️</div>
+        <div class="p-name">pH Level</div>
+        <div class="p-val">7.2</div>
+        <div class="p-range">Safe range: 6.5 – 8.5</div>
+        <span class="chip chip-safe">Normal</span>
+      </div>
+      <div class="param-card">
+        <div class="p-icon">💎</div>
+        <div class="p-name">TDS</div>
+        <div class="p-val">210 <span class="p-unit">ppm</span></div>
+        <div class="p-range">Safe limit: 500 ppm</div>
+        <span class="chip chip-safe">Normal</span>
+      </div>
+      <div class="param-card">
+        <div class="p-icon">🌡️</div>
+        <div class="p-name">Temperature</div>
+        <div class="p-val">24 <span class="p-unit">°C</span></div>
+        <div class="p-range">Normal: 20 – 30 °C</div>
+        <span class="chip chip-safe">Normal</span>
+      </div>
+      <div class="param-card">
+        <div class="p-icon">🌀</div>
+        <div class="p-name">Turbidity</div>
+        <div class="p-val">4 <span class="p-unit">NTU</span></div>
+        <div class="p-range">Safe limit: 10 NTU</div>
+        <span class="chip chip-safe">Normal</span>
+      </div>
+      <div class="param-card">
+        <div class="p-icon">🫧</div>
+        <div class="p-name">Dissolved O₂</div>
+        <div class="p-val">8.5 <span class="p-unit">mg/L</span></div>
+        <div class="p-range">Minimum: 6 mg/L</div>
+        <span class="chip chip-safe">Good</span>
+      </div>
+      <div class="param-card">
+        <div class="p-icon">⚡</div>
+        <div class="p-name">Conductivity</div>
+        <div class="p-val">420 <span class="p-unit">µS</span></div>
+        <div class="p-range">Safe limit: 1000 µS</div>
+        <span class="chip chip-mod">Watch</span>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-card-head">
+        <div class="chart-card-title" id="chart-title">pH Level — Last 24 Hours</div>
+        <div class="tab-row">
+          <button class="tab on" onclick="switchTab(this,'ph')">pH</button>
+          <button class="tab"    onclick="switchTab(this,'tds')">TDS</button>
+          <button class="tab"    onclick="switchTab(this,'turb')">Turbidity</button>
+          <button class="tab"    onclick="switchTab(this,'do')">DO</button>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <svg id="main-chart" viewBox="0 0 900 180" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"   stop-color="#FF6B00" stop-opacity=".28"/>
+              <stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <line x1="0" y1="45"  x2="900" y2="45"  stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="90"  x2="900" y2="90"  stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="135" x2="900" y2="135" stroke="#222" stroke-width="1"/>
+          <path id="c-area" fill="url(#cg)"/>
+          <path id="c-line" fill="none" stroke="#FF6B00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="8"   y="175" fill="#555" font-size="11">00:00</text>
+          <text x="200" y="175" fill="#555" font-size="11">06:00</text>
+          <text x="420" y="175" fill="#555" font-size="11">12:00</text>
+          <text x="640" y="175" fill="#555" font-size="11">18:00</text>
+          <text x="840" y="175" fill="#555" font-size="11">24:00</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     AI ENGINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div id="page-ai" class="page">
+  <div class="wrap">
+    <div class="pg-head">
+      <h1>AI Pollution Risk Engine™</h1>
+      <p>Scikit-learn Random Forest · Trained on 5 years of Ganga river data · 91% accuracy</p>
+    </div>
+
+    <div class="ai-hero">
+      <div class="risk-engine-card">
+        <div class="re-eyebrow">CURRENT RISK SCORE</div>
+        <div class="re-title">Pollution Risk Engine™</div>
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <div class="re-num" id="re-num" style="color:var(--moderate)">47</div>
+          <div class="re-denom">/ 100</div>
+        </div>
+        <div class="re-status" id="re-status" style="color:var(--moderate)">⚠ MODERATE RISK</div>
+        <div class="re-bar-wrap">
+          <div class="re-bar-fill" id="re-bar"></div>
+        </div>
+        <div class="re-scale">
+          <span>0</span><span>30</span><span>60</span><span>80</span><span>100</span>
+        </div>
+        <button class="btn-primary" style="margin-top:22px;width:100%" id="ai-run-btn" onclick="runAI()">🔄 Re-run Analysis</button>
+      </div>
+
+      <div class="ai-detail-card">
+        <div class="ai-row">
+          <div class="ai-row-k">Predicted Issue</div>
+          <div class="ai-row-v">Industrial Waste Discharge</div>
+        </div>
+        <div class="ai-row">
+          <div class="ai-row-k">Confidence Level</div>
+          <div class="ai-row-v" style="margin-bottom:8px">91%</div>
+          <div class="conf-bar-wrap"><div class="conf-bar" style="width:91%"></div></div>
+        </div>
+        <div class="ai-row">
+          <div class="ai-row-k">Estimated Time to Event</div>
+          <div class="ai-row-v">~ 18 Hours</div>
+        </div>
+        <div class="ai-row">
+          <div class="ai-row-k">Affected Stations</div>
+          <div class="ai-row-v">Station #07 – #11</div>
+        </div>
+        <div class="ai-row">
+          <div class="ai-row-k">Recommended Action</div>
+          <div class="ai-row-v" style="color:var(--orange)">Dispatch Inspection Team</div>
+        </div>
+        <div class="ai-row">
+          <div class="ai-row-k">Model Version</div>
+          <div class="ai-row-v">v3.1 — Random Forest (Scikit-learn)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow" style="margin-bottom:12px">AI RISK SCORE™ CLASSIFICATION</div>
+    <div class="scale-row">
+      <div class="scale-box s0"><div class="scale-range">0 – 30</div><div class="scale-name">✓ Safe</div></div>
+      <div class="scale-box s1"><div class="scale-range">31 – 60</div><div class="scale-name">⚠ Moderate</div></div>
+      <div class="scale-box s2"><div class="scale-range">61 – 80</div><div class="scale-name">🔴 High</div></div>
+      <div class="scale-box s3"><div class="scale-range">81 – 100</div><div class="scale-name">🚨 Critical</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     CAMERA AI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div id="page-camera" class="page">
+  <div class="wrap">
+    <div class="pg-head">
+      <h1>Camera AI Analysis</h1>
+      <p>Upload a water surface image — AI detects pollution indicators in seconds</p>
+    </div>
+
+    <label class="upload-zone" for="cam-input">
+      <input type="file" id="cam-input" accept="image/*" onchange="analyzeImg(event)">
+      <div class="upload-icon">📷</div>
+      <div class="upload-title">Drop image here or click to upload</div>
+      <div class="upload-sub">JPG · PNG · WEBP &nbsp;|&nbsp; Max 15 MB &nbsp;|&nbsp; AI analyses in ~2 seconds</div>
+    </label>
+
+    <div style="text-align:center;margin:-10px 0 22px">
+      <button class="btn-ghost" onclick="runDemoAnalysis()">▶ Run Demo Analysis</button>
+    </div>
+
+    <div class="cam-result" id="cam-result">
+      <div class="cam-img-wrap" id="cam-img-wrap">
+        <div class="cam-placeholder">
+          <div>🌊</div>
+          <div>Image preview</div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:15px;font-weight:800;margin-bottom:16px">🔬 AI Detection Results</h3>
+        <div class="det-list">
+          <div class="det-item"><div class="det-icon">✅</div><div class="det-name">Plastic Waste</div><div class="det-badge hi">94% confidence</div></div>
+          <div class="det-item"><div class="det-icon">✅</div><div class="det-name">Algae Bloom</div><div class="det-badge md">78% confidence</div></div>
+          <div class="det-item"><div class="det-icon">✅</div><div class="det-name">Oil Layer / Sheen</div><div class="det-badge hi">86% confidence</div></div>
+          <div class="det-item" style="opacity:.45"><div class="det-icon">—</div><div class="det-name">Foam Contamination</div><div class="det-badge lo">12% confidence</div></div>
+        </div>
+        <div class="cam-risk-box">
+          <div class="cam-risk-lbl">Overall Visual Risk Assessment</div>
+          <div class="cam-risk-val">🔴 HIGH RISK</div>
+        </div>
+        <button class="btn-primary" style="margin-top:16px;width:100%" onclick="toast('Camera Report Ready','AI_Camera_Report.pdf — 0.9 MB')">📄 Download AI Report</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     MAP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div id="page-map" class="page">
+  <div class="wrap">
+    <div class="pg-head">
+      <h1>River Monitoring Map</h1>
+      <p>Click any station point to view real-time readings</p>
+    </div>
+
+    <div class="map-shell" id="map-shell">
+      <div class="map-base"></div>
+      <svg class="map-svg" viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet">
+        <!-- River Ganga stylised path -->
+        <path d="M 40 250 Q 130 210 220 235 Q 320 262 420 248 Q 520 232 620 255 Q 720 278 830 250 Q 880 237 920 248"
+          fill="none" stroke="rgba(59,130,246,.22)" stroke-width="36" stroke-linecap="round"/>
+        <path d="M 40 250 Q 130 210 220 235 Q 320 262 420 248 Q 520 232 620 255 Q 720 278 830 250 Q 880 237 920 248"
+          fill="none" stroke="rgba(59,130,246,.55)" stroke-width="3.5" stroke-dasharray="12 6"/>
+        <text x="370" y="224" fill="rgba(59,130,246,.35)" font-size="13" font-weight="700" letter-spacing="3">RIVER GANGA</text>
+      </svg>
+
+      <!-- Pins -->
+      <div class="map-pin" style="left:10%;top:44%" onclick="showPin(this,'Rishikesh','7.8','90','Safe','safe')">
+        <div class="pin-label">Rishikesh</div><div class="pin-dot safe"></div>
+      </div>
+      <div class="map-pin" style="left:24%;top:46%" onclick="showPin(this,'Haridwar','7.4','84','Safe','safe')">
+        <div class="pin-label">Haridwar</div><div class="pin-dot safe"></div>
+      </div>
+      <div class="map-pin" style="left:41%;top:50%" onclick="showPin(this,'Kanpur','6.9','52','Moderate','moderate')">
+        <div class="pin-label">Kanpur</div><div class="pin-dot moderate"></div>
+      </div>
+      <div class="map-pin" style="left:56%;top:48%" onclick="showPin(this,'Prayagraj','7.0','61','Moderate','moderate')">
+        <div class="pin-label">Prayagraj</div><div class="pin-dot moderate"></div>
+      </div>
+      <div class="map-pin" style="left:70%;top:51%" onclick="showPin(this,'Varanasi ★','7.2','82','Safe','safe')">
+        <div class="pin-label">Varanasi</div><div class="pin-dot safe"></div>
+      </div>
+      <div class="map-pin" style="left:86%;top:49%" onclick="showPin(this,'Patna','6.5','36','High Risk','unsafe')">
+        <div class="pin-label">Patna</div><div class="pin-dot unsafe"></div>
+      </div>
+
+      <!-- Popup -->
+      <div class="map-popup" id="map-popup">
+        <div class="mp-loc" id="mp-loc">—</div>
+        <div class="mp-row"><div class="mp-k">pH</div><div class="mp-v" id="mp-ph">—</div></div>
+        <div class="mp-row"><div class="mp-k">WQI</div><div class="mp-v" id="mp-wqi">—</div></div>
+        <div class="mp-row"><div class="mp-k">TDS</div><div class="mp-v">210 ppm</div></div>
+        <div class="mp-row"><div class="mp-k">Status</div><div class="mp-v" id="mp-status">—</div></div>
+      </div>
+    </div>
+
+    <div class="map-legend">
+      <div class="leg-item"><div class="leg-dot" style="background:var(--safe)"></div> Safe (WQI &gt; 70)</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--moderate)"></div> Moderate (40–70)</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--high)"></div> High Risk (&lt; 40)</div>
+      <div style="margin-left:auto;font-size:12px;color:var(--muted)">★ Current Session: Station #07</div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     ANALYTICS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div id="page-analytics" class="page">
+  <div class="wrap">
+    <div class="pg-head">
+      <h1>Analytics</h1>
+      <p>Historical trends, pollution incidents, and AI risk projections</p>
+    </div>
+    <div class="analytics-grid">
+      <div class="a-card">
+        <div class="a-card-title">pH Trend — 30 Days</div>
+        <div class="a-card-sub">Daily average readings, Station #07</div>
+        <svg viewBox="0 0 420 150" style="width:100%;height:150px">
+          <defs><linearGradient id="ag1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FF6B00" stop-opacity=".3"/><stop offset="100%" stop-color="#FF6B00" stop-opacity="0"/></linearGradient></defs>
+          <line x1="0" y1="40" x2="420" y2="40" stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="90" x2="420" y2="90" stroke="#222" stroke-width="1"/>
+          <line x1="0" y1="130" x2="420" y2="130" stroke="#2a2a2a" stroke-width="1"/>
+          <path d="M0,75 C30,68 55,82 80,72 C105,62 130,88 160,76 C185,66 210,72 240,62 C265,52 290,68 315,65 C340,62 375,70 420,66 L420,150 L0,150 Z" fill="url(#ag1)"/>
+          <path d="M0,75 C30,68 55,82 80,72 C105,62 130,88 160,76 C185,66 210,72 240,62 C265,52 290,68 315,65 C340,62 375,70 420,66" fill="none" stroke="#FF6B00" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="5" y="38" fill="#555" font-size="10">pH 8.5</text>
+          <text x="5" y="88" fill="#555" font-size="10">pH 7.0</text>
+          <text x="5" y="148" fill="#555" font-size="10">Day 1</text>
+          <text x="372" y="148" fill="#555" font-size="10">Day 30</text>
+        </svg>
+      </div>
+      <div class="a-card">
+        <div class="a-card-title">Turbidity — 30 Days</div>
+        <div class="a-card-sub">NTU with alert threshold at 10 NTU</div>
+        <svg viewBox="0 0 420 150" style="width:100%;height:150px">
+          <defs><linearGradient id="ag2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FFA64D" stop-opacity=".3"/><stop offset="100%" stop-color="#FFA64D" stop-opacity="0"/></linearGradient></defs>
+          <line x1="0" y1="35" x2="420" y2="35" stroke="rgba(239,68,68,.3)" stroke-width="1.5" stroke-dasharray="7 4"/>
+          <text x="300" y="30" fill="rgba(239,68,68,.6)" font-size="10">Alert: 10 NTU</text>
+          <line x1="0" y1="90" x2="420" y2="90" stroke="#222" stroke-width="1"/>
+          <path d="M0,115 C40,110 65,95 95,88 C125,80 145,108 175,96 C200,86 225,68 255,82 C280,96 305,92 330,78 C355,65 385,72 420,68 L420,150 L0,150 Z" fill="url(#ag2)"/>
+          <path d="M0,115 C40,110 65,95 95,88 C125,80 145,108 175,96 C200,86 225,68 255,82 C280,96 305,92 330,78 C355,65 385,72 420,68" fill="none" stroke="#FFA64D" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="a-card">
+        <div class="a-card-title">Pollution Incidents — Monthly</div>
+        <div class="a-card-sub">Confirmed contamination events this year</div>
+        <svg viewBox="0 0 420 150" style="width:100%;height:150px">
+          <rect x="14"  y="98"  width="28" height="42" rx="4" fill="rgba(255,107,0,.35)"/>
+          <rect x="56"  y="78"  width="28" height="62" rx="4" fill="rgba(255,107,0,.55)"/>
+          <rect x="98"  y="88"  width="28" height="52" rx="4" fill="rgba(255,107,0,.45)"/>
+          <rect x="140" y="58"  width="28" height="82" rx="4" fill="#FF6B00"/>
+          <rect x="182" y="108" width="28" height="32" rx="4" fill="rgba(255,107,0,.3)"/>
+          <rect x="224" y="72"  width="28" height="68" rx="4" fill="rgba(255,107,0,.6)"/>
+          <rect x="266" y="92"  width="28" height="48" rx="4" fill="rgba(255,107,0,.4)"/>
+          <rect x="308" y="68"  width="28" height="72" rx="4" fill="rgba(255,107,0,.7)"/>
+          <rect x="350" y="82"  width="28" height="58" rx="4" fill="rgba(255,107,0,.5)"/>
+          <line x1="0" y1="140" x2="420" y2="140" stroke="#2a2a2a" stroke-width="1"/>
+          <text x="16"  y="150" fill="#555" font-size="9">Jan</text><text x="58"  y="150" fill="#555" font-size="9">Feb</text>
+          <text x="100" y="150" fill="#555" font-size="9">Mar</text><text x="142" y="150" fill="#555" font-size="9">Apr</text>
+          <text x="184" y="150" fill="#555" font-size="9">May</text><text x="226" y="150" fill="#555" font-size="9">Jun</text>
+          <text x="268" y="150" fill="#555" font-size="9">Jul</text><text x="310" y="150" fill="#555" font-size="9">Aug</text>
+          <text x="352" y="150" fill="#555" font-size="9">Sep</text>
+        </svg>
+      </div>
+      <div class="a-card">
+        <div class="a-card-title">AI Risk Score — Last 7 Days</div>
+        <div class="a-card-sub">Daily predicted pollution risk level</div>
+        <svg viewBox="0 0 420 150" style="width:100%;height:150px">
+          <defs><linearGradient id="ag3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ef4444" stop-opacity=".2"/><stop offset="100%" stop-color="#ef4444" stop-opacity="0"/></linearGradient></defs>
+          <line x1="0" y1="75"  x2="420" y2="75"  stroke="rgba(245,158,11,.2)" stroke-dasharray="5 4"/>
+          <text x="330" y="70" fill="rgba(245,158,11,.5)" font-size="9">Moderate threshold</text>
+          <line x1="0" y1="115" x2="420" y2="115" stroke="#222" stroke-width="1"/>
+          <path d="M0,120 L60,112 L120,92 L180,102 L240,76 L300,58 L360,80 L420,86 L420,150 L0,150 Z" fill="url(#ag3)"/>
+          <path d="M0,120 L60,112 L120,92 L180,102 L240,76 L300,58 L360,80 L420,86" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="2"   y="148" fill="#555" font-size="9">Mon</text><text x="56"  y="148" fill="#555" font-size="9">Tue</text>
+          <text x="114" y="148" fill="#555" font-size="9">Wed</text><text x="174" y="148" fill="#555" font-size="9">Thu</text>
+          <text x="234" y="148" fill="#555" font-size="9">Fri</text><text x="294" y="148" fill="#555" font-size="9">Sat</text>
+          <text x="354" y="148" fill="#555" font-size="9">Sun</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     ALERTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div id="page-alerts" class="page">
+  <div class="wrap">
+    <div class="pg-head" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+      <div>
+        <h1>Alert Center</h1>
+        <p>3 active alerts · Last synced 2 minutes ago</p>
+      </div>
+      <button class="btn-primary" onclick="toast('Alerts Acknowledged','All active alerts marked as reviewed')">✓ Acknowledge All</button>
+    </div>
+    <div class="alert-list">
+      <div class="alert-item crit">
+        <div class="alert-icon">🚨</div>
+        <div class="alert-body">
+          <div class="alert-title">TDS Exceeded Threshold — Station #04</div>
+          <div class="alert-meta">📍 Kanpur Industrial Zone &nbsp;·&nbsp; 🕐 14:35 PM today &nbsp;·&nbsp; Station #04</div>
+          <div class="alert-action">⚡ Action: Dispatch Inspection Team Immediately</div>
+        </div>
+        <div class="alert-tag"><span class="chip chip-high">CRITICAL</span></div>
+      </div>
+      <div class="alert-item warn">
+        <div class="alert-icon">⚠️</div>
+        <div class="alert-body">
+          <div class="alert-title">pH Drop Detected — Station #07</div>
+          <div class="alert-meta">📍 Varanasi River Ghat &nbsp;·&nbsp; 🕐 11:20 AM today &nbsp;·&nbsp; Station #07</div>
+          <div class="alert-action">⚡ Action: Increase monitoring frequency to 30 s intervals</div>
+        </div>
+        <div class="alert-tag"><span class="chip chip-mod">WARNING</span></div>
+      </div>
+      <div class="alert-item warn">
+        <div class="alert-icon">🌡️</div>
+        <div class="alert-body">
+          <div class="alert-title">Elevated Water Temperature — Station #11</div>
+          <div class="alert-meta">📍 Patna Riverbank &nbsp;·&nbsp; 🕐 09:45 AM today &nbsp;·&nbsp; Station #11</div>
+          <div class="alert-action">⚡ Action: Check for thermal discharge from nearby industry</div>
+        </div>
+        <div class="alert-tag"><span class="chip chip-mod">WARNING</span></div>
+      </div>
+      <div class="alert-item info">
+        <div class="alert-icon">✅</div>
+        <div class="alert-body">
+          <div class="alert-title">Turbidity Spike Resolved — Station #03</div>
+          <div class="alert-meta">📍 Haridwar Upper Ghat &nbsp;·&nbsp; 🕐 Yesterday 18:20 PM &nbsp;·&nbsp; Station #03</div>
+          <div class="alert-action">Resolved after 2.5 hours · No further action required</div>
+        </div>
+        <div class="alert-tag"><span class="chip chip-safe">RESOLVED</span></div>
+      </div>
+      <div class="alert-item info">
+        <div class="alert-icon">✅</div>
+        <div class="alert-body">
+          <div class="alert-title">DO Level Below Threshold — Station #09</div>
+          <div class="alert-meta">📍 Allahabad Confluence &nbsp;·&nbsp; 🕐 Yesterday 08:00 AM &nbsp;·&nbsp; Station #09</div>
+          <div class="alert-action">Resolved after 4 hours · Cause: seasonal variation</div>
+        </div>
+        <div class="alert-tag"><span class="chip chip-safe">RESOLVED</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     REPORTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div id="page-report" class="page">
+  <div class="wrap">
+    <div class="pg-head">
+      <h1>Auto Report Generator</h1>
+      <p>CPCB &amp; NGT compliant reports generated in seconds</p>
+    </div>
+    <div class="report-gen-card">
+      <div class="report-gen-icon">📄</div>
+      <div class="report-gen-title">Generate Monthly Report</div>
+      <div class="report-gen-sub">Select report sections and click Generate</div>
+      <div class="option-row">
+        <div class="opt-chip sel" onclick="this.classList.toggle('sel')">📊 Water Quality Summary</div>
+        <div class="opt-chip sel" onclick="this.classList.toggle('sel')">🤖 AI Findings</div>
+        <div class="opt-chip sel" onclick="this.classList.toggle('sel')">⚠️ Pollution Incidents</div>
+        <div class="opt-chip sel" onclick="this.classList.toggle('sel')">💡 Recommendations</div>
+        <div class="opt-chip"     onclick="this.classList.toggle('sel')">📈 Trend Charts</div>
+        <div class="opt-chip"     onclick="this.classList.toggle('sel')">🗺️ Station Map</div>
+      </div>
+      <button class="btn-primary" id="gen-btn" style="padding:13px 40px;font-size:14px" onclick="generateReport()">
+        Generate PDF Report
+      </button>
+    </div>
+
+    <div class="report-doc" id="report-doc">
+      <div class="doc-hdr">
+        <div>
+          <div class="doc-hdr-title">Water Quality Monitoring Report — June 2025</div>
+          <div class="doc-hdr-meta">AquaAI Platform &nbsp;·&nbsp; River Ganga &nbsp;·&nbsp; 47 Stations &nbsp;·&nbsp; Generated by AI</div>
+        </div>
+        <button class="btn-primary" onclick="toast('Downloading','AquaAI_Report_June2025.pdf — 1.4 MB')">⬇ Download PDF</button>
+      </div>
+      <div class="doc-section">
+        <div class="doc-section-title">Water Quality Summary</div>
+        <div class="doc-row"><div class="doc-row-k">Monitoring Period</div><div class="doc-row-v">June 1 – 30, 2025</div></div>
+        <div class="doc-row"><div class="doc-row-k">Stations Monitored</div><div class="doc-row-v">47 Active Stations</div></div>
+        <div class="doc-row"><div class="doc-row-k">Average WQI</div><div class="doc-row-v" style="color:var(--safe)">74.2 — SAFE</div></div>
+        <div class="doc-row"><div class="doc-row-k">Average pH</div><div class="doc-row-v">7.18</div></div>
+        <div class="doc-row"><div class="doc-row-k">Average TDS</div><div class="doc-row-v">228 ppm</div></div>
+      </div>
+      <div class="doc-section">
+        <div class="doc-section-title">AI Findings</div>
+        <div class="doc-row"><div class="doc-row-k">AI Model</div><div class="doc-row-v">v3.1 — Scikit-learn Random Forest</div></div>
+        <div class="doc-row"><div class="doc-row-k">Predictions Made</div><div class="doc-row-v">48</div></div>
+        <div class="doc-row"><div class="doc-row-k">Model Accuracy</div><div class="doc-row-v">91.2%</div></div>
+        <div class="doc-row"><div class="doc-row-k">Primary Risk Factor</div><div class="doc-row-v">Industrial discharge — Kanpur zone</div></div>
+      </div>
+      <div class="doc-section">
+        <div class="doc-section-title">Pollution Incidents</div>
+        <div class="doc-row"><div class="doc-row-k">Total Incidents</div><div class="doc-row-v">7</div></div>
+        <div class="doc-row"><div class="doc-row-k">Critical Events</div><div class="doc-row-v" style="color:var(--high)">2</div></div>
+        <div class="doc-row"><div class="doc-row-k">Average Resolution Time</div><div class="doc-row-v">3.4 hours</div></div>
+      </div>
+      <div class="doc-section">
+        <div class="doc-section-title">Recommendations</div>
+        <div class="doc-recs">
+          1. Increase monitoring frequency at Station #04 (Kanpur) due to recurring TDS spikes.<br>
+          2. Deploy additional ESP32 sensors in the Patna stretch (Stations #10 – #13).<br>
+          3. Coordinate with UPPCB regarding industrial discharge near Kanpur Industrial Zone.<br>
+          4. Schedule maintenance for Stations #18, #31, #44 — offline for more than 48 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━ BOTTOM NAV ━━━ -->
+<nav id="bottomnav">
+  <div class="bn-item on" onclick="go('home')"><div class="bn-icon">🏠</div>Home</div>
+  <div class="bn-item"    onclick="go('dashboard')"><div class="bn-icon">📊</div>Monitor</div>
+  <div class="bn-item"    onclick="go('map')"><div class="bn-icon">🗺️</div>Map</div>
+  <div class="bn-item"    onclick="go('alerts')"><div class="bn-icon">🔔</div>Alerts</div>
+  <div class="bn-item"    onclick="go('report')"><div class="bn-icon">📄</div>Reports</div>
+</nav>
+
+<!-- TOAST -->
+<div id="toast">
+  <div id="toast-title"></div>
+  <div id="toast-body"></div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     JAVASCRIPT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <script src="app.js"></script>
+</body>
+</html>
